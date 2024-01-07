@@ -18,8 +18,8 @@ class Setup
 
 //  " SQL code to set up database tables",
 
-//  "drop table ProductList",
-//  "drop table StockList",
+  "drop table ProductList",
+  "drop table StockList",
 
 
   "drop table ProductTable",
@@ -43,7 +43,7 @@ class Setup
      "('0006', 'MP3 player',        'images/pic0006.jpg', 7.99)",
   "insert into ProductTable values " +
      "('0007', '32Gb USB2 drive',   'images/pic0007.jpg', 6.99)",
-//  "select * from ProductTable",
+  "select * from ProductTable",
 
 
   "drop table StockTable",

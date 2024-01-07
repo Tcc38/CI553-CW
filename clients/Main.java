@@ -53,7 +53,6 @@ class Main
     if ( many ) 
      startCustomerGUI_MVC( mlf );
     startCashierGUI_MVC( mlf );
-    startCashierGUI_MVC( mlf );
     startBackDoorGUI_MVC( mlf );
     if ( many ) 
       startPickGUI_MVC( mlf );

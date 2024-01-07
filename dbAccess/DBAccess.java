@@ -18,16 +18,16 @@ public class DBAccess
 
   public String urlOfDatabase()
   {
-    return "";
+    return " ";
   }
 
   public String username()
   {
-    return "";
+    return "tcc38_randroot";
   }
 
   public String password()
   {
-    return "";
+    return "3%VIFfz{GVnr";
   }
 }
