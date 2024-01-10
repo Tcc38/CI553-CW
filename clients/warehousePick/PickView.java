@@ -55,16 +55,16 @@ public class PickView implements Observer
     
     Font f = new Font("Monospaced",Font.PLAIN,12);  // Font f is
 
-    theBtPicked.setBounds( 16, 25+60*0, 80, 40 );   // Check Button
+    theBtPicked.setBounds( 816, 25+60*0, 80, 40 );   // Check Button
     theBtPicked.addActionListener(                   // Call back code
       e -> cont.doPick() );
     cp.add( theBtPicked );                          //  Add to canvas
 
-    theAction.setBounds( 110, 25 , 270, 20 );       // Message area
+    theAction.setBounds( 910, 25 , 270, 20 );       // Message area
     theAction.setText( "" );                        // Blank
     cp.add( theAction );                            //  Add to canvas
 
-    theSP.setBounds( 110, 55, 270, 205 );           // Scrolling pane
+    theSP.setBounds( 910, 55, 270, 205 );           // Scrolling pane
     theOutput.setText( "" );                        //  Blank
     theOutput.setFont( f );                         //  Uses font  
     cp.add( theSP );                                //  Add to canvas

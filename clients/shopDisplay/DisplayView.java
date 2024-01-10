@@ -71,12 +71,12 @@ public class DisplayView extends Canvas implements Observer
       ( (DisplayModel) aModelOfDisplay ).getOrderState();
 
       textToDisplay = 
-           "Orders in system" + "\n" +
-           "Waiting        : " + listOfOrders( res, "Waiting" ) + 
+           " Orders in system" + "\n" +
+           " Waiting        : " + listOfOrders( res, "Waiting" ) +
            "\n"  + 
-           "Being picked   : " + listOfOrders( res, "BeingPicked" ) + 
+           " Being picked   : " + listOfOrders( res, "BeingPicked" ) +
            "\n"  + 
-           "To Be Collected: " + listOfOrders( res, "ToBeCollected" );
+           " To Be Collected: " + listOfOrders( res, "ToBeCollected" );
     }
     catch ( OrderException err )
     {
@@ -128,8 +128,8 @@ public class DisplayView extends Canvas implements Observer
  
   public void drawActualScreen( Graphics2D g )  // Re draw contents 
   {
-    g.setPaint( Color.white );            // Paint Colour 
-    W = getWidth(); H = getHeight();      // Current size
+    g.setPaint( Color.white );            // Paint Colour
+    W = (getWidth()/3); H = getHeight();      // Current size
     
     g.setFont( font );
     g.fill( new Rectangle2D.Double( 0, 0, W, H ) );

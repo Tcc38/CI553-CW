@@ -22,7 +22,7 @@ import java.io.IOException;
 
 public class DBAccessFactory
 {
-  private static String theAction   = "";
+  public static String theAction   = "";
   private static String theDataBase = "";
   private static String theOS       = "";
 

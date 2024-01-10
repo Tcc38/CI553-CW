@@ -24,6 +24,8 @@ public class CashierView implements Observer
   private static final String BUY    = "Buy";
   private static final String BOUGHT = "Bought";
 
+  private static final String RECEIPT = "Keep your receipt";
+
   private final JLabel      theAction  = new JLabel();
   private final JTextField  theInput   = new JTextField();
   private final JTextArea   theOutput  = new JTextArea();
@@ -31,6 +33,8 @@ public class CashierView implements Observer
   private final JButton     theBtCheck = new JButton( CHECK );
   private final JButton     theBtBuy   = new JButton( BUY );
   private final JButton     theBtBought= new JButton( BOUGHT );
+
+  final JCheckBox   printReceipt = new JCheckBox("Would you like your receipt?", false);
 
   private StockReadWriter theStock     = null;
   private OrderProcessing theOrder     = null;
@@ -70,7 +74,11 @@ public class CashierView implements Observer
     theBtBuy.setBounds( 16, 25+60*1, 80, 40 );      // Buy button 
     theBtBuy.addActionListener(                     // Call back code
       e -> cont.doBuy() );
-    cp.add( theBtBuy );                             //  Add to canvas
+    cp.add( theBtBuy );//  Add to canvas
+
+    printReceipt.setBounds(16, 25+60*2, 20, 40);
+    printReceipt.addActionListener(e -> cont.setPrintReceipt(printReceipt.isSelected()));
+    cp.add( printReceipt);
 
     theBtBought.setBounds( 16, 25+60*3, 80, 40 );   // Clear Button
     theBtBought.addActionListener(                  // Call back code
@@ -93,6 +101,7 @@ public class CashierView implements Observer
     rootWindow.setVisible( true );                  // Make visible
     theInput.requestFocus();                        // Focus is here
   }
+
 
   /**
    * The controller object, used so that an interaction can be passed to the controller

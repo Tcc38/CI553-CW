@@ -59,36 +59,36 @@ public class BackDoorView implements Observer
     
     Font f = new Font("Monospaced",Font.PLAIN,12);  // Font f is
 
-    theBtQuery.setBounds( 16, 25+60*0, 80, 40 );    // Buy button 
+    theBtQuery.setBounds( 416, 25+60*0, 80, 40 );    // Buy button
     theBtQuery.addActionListener(                   // Call back code
       e -> cont.doQuery( theInput.getText() ) );
     cp.add( theBtQuery );                           //  Add to canvas
 
-    theBtRStock.setBounds( 16, 25+60*1, 80, 40 );   // Check Button
+    theBtRStock.setBounds( 416, 25+60*1, 80, 40 );   // Check Button
     theBtRStock.addActionListener(                  // Call back code
       e -> cont.doRStock( theInput.getText(),
                           theInputNo.getText() ) );
     cp.add( theBtRStock );                          //  Add to canvas
 
-    theBtClear.setBounds( 16, 25+60*2, 80, 40 );    // Buy button 
+    theBtClear.setBounds( 416, 25+60*2, 80, 40 );    // Buy button
     theBtClear.addActionListener(                   // Call back code
       e -> cont.doClear() );
     cp.add( theBtClear );                           //  Add to canvas
 
  
-    theAction.setBounds( 110, 25 , 270, 20 );       // Message area
+    theAction.setBounds( 510, 25 , 270, 20 );       // Message area
     theAction.setText( "" );                        // Blank
     cp.add( theAction );                            //  Add to canvas
 
-    theInput.setBounds( 110, 50, 120, 40 );         // Input Area
+    theInput.setBounds( 510, 50, 120, 40 );         // Input Area
     theInput.setText("");                           // Blank
     cp.add( theInput );                             //  Add to canvas
     
-    theInputNo.setBounds( 260, 50, 120, 40 );       // Input Area
+    theInputNo.setBounds( 660, 50, 120, 40 );       // Input Area
     theInputNo.setText("0");                        // 0
     cp.add( theInputNo );                           //  Add to canvas
 
-    theSP.setBounds( 110, 100, 270, 160 );          // Scrolling pane
+    theSP.setBounds( 510, 100, 270, 160 );          // Scrolling pane
     theOutput.setText( "" );                        //  Blank
     theOutput.setFont( f );                         //  Uses font  
     cp.add( theSP );                                //  Add to canvas

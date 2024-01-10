@@ -44,6 +44,13 @@ public class CashierController
    */
   public void doBought()
   {
-    model.doBought();
+    boolean printReceipt = view.printReceipt.isSelected();
+    model.doBought(printReceipt);
   }
+
+  public void setPrintReceipt(boolean printReceipt) {
+    model.setPrintReceipt(printReceipt);
+  }
+
+  public void doReceipt() { model.doReceipt();}
 }

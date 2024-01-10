@@ -1,10 +1,16 @@
 package clients.cashier;
 
 import catalogue.Basket;
+import catalogue.BetterBasket;
 import catalogue.Product;
 import debug.DEBUG;
 import middle.*;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Observable;
 
 /**
@@ -18,7 +24,7 @@ public class CashierModel extends Observable
 
   private State       theState   = State.process;   // Current state
   private Product     theProduct = null;            // Current product
-  private Basket      theBasket  = null;            // Bought items
+  private BetterBasket      theBasket  = null;            // Changed it to better basket
 
   private String      pn = "";                      // Product being processed
 
@@ -130,34 +136,60 @@ public class CashierModel extends Observable
     theState = State.process;                   // All Done
     setChanged(); notifyObservers(theAction);
   }
-  
+  public void setPrintReceipt(boolean printReceipt){
+
+  }
+  public void doReceipt() {
+    Basket basket = getBasket();
+      if (basket != null) {
+        LocalDateTime timeStamp = LocalDateTime.now();
+        DateTimeFormatter receiptFormat = DateTimeFormatter.ofPattern("dd_MM_yy--HH-mm");
+        String receiptTag = receiptFormat.format(timeStamp);
+        try {
+          File receiptDir = new File("savedReceipts");
+          if (! receiptDir.exists()) {
+            receiptDir.mkdir();
+          }
+          String receiptID = "savedReceipts/" + receiptTag + ".txt";
+          FileWriter receiptPrinter = new FileWriter(receiptID);
+          receiptPrinter.write(("Thank you for shopping with us! \n \n" + basket.getDetails() + "\nTimestamp for purchase: " + receiptTag));
+          receiptPrinter.close();
+
+        } catch (IOException e) {
+          System.out.println("Printing error");
+          e.printStackTrace();
+        }
+    }
+  }
   /**
    * Customer pays for the contents of the basket
    */
-  public void doBought()
-  {
-    String theAction = "";
-    int    amount  = 1;                       //  & quantity
-    try
-    {
-      if ( theBasket != null &&
-           theBasket.size() >= 1 )            // items > 1
-      {                                       // T
-        theOrder.newOrder( theBasket );       //  Process order
-        theBasket = null;                     //  reset
-      }                                       //
-      theAction = "Next customer";            // New Customer
-      theState = State.process;               // All Done
-      theBasket = null;
-    } catch( OrderException e )
-    {
-      DEBUG.error( "%s\n%s", 
-            "CashierModel.doCancel", e.getMessage() );
-      theAction = e.getMessage();
+  public void doBought(boolean printReceipt) {
+    if (printReceipt) {
+      doReceipt();
     }
-    theBasket = null;
-    setChanged(); notifyObservers(theAction); // Notify
-  }
+
+      String theAction = "";
+      int amount = 1;                       //  & quantity
+      try {
+        if (theBasket != null &&
+                theBasket.size() >= 1)            // items > 1
+        {                                       // T
+          theOrder.newOrder(theBasket);       //  Process order
+          theBasket = null;                     //  reset
+        }                                       //
+        theAction = "Next customer";            // New Customer
+        theState = State.process;               // All Done
+        theBasket = null;
+      } catch (OrderException e) {
+        DEBUG.error("%s\n%s",
+                "CashierModel.doCancel", e.getMessage());
+        theAction = e.getMessage();
+      }
+      theBasket = null;
+      setChanged();
+      notifyObservers(theAction); // Notify
+    }
 
   /**
    * ask for update of view callled at start of day
@@ -192,9 +224,9 @@ public class CashierModel extends Observable
    * return an instance of a new Basket
    * @return an instance of a new Basket
    */
-  protected Basket makeBasket()
+  protected BetterBasket makeBasket()
   {
-    return new Basket();
+    return new BetterBasket();
   }
 }
   
