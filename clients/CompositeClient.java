@@ -13,8 +13,8 @@ import middle.LocalMiddleFactory;
 
 import javax.swing.*;
 
-public class CompositeView extends JFrame  {
-    public CompositeView() {
+public class CompositeClient extends JFrame  {
+    public CompositeClient() {
         initComponents();
     }
 LocalMiddleFactory cvmf = new LocalMiddleFactory();// I created a new instance of the LocalMiddleFactory, specifically for the new clients(not sure if it was needed yet it works)
@@ -51,9 +51,9 @@ LocalMiddleFactory cvmf = new LocalMiddleFactory();// I created a new instance o
 
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new CompositeView());
+        SwingUtilities.invokeLater(() -> new CompositeClient());
     }
-    //the next 3 lines are used for testing as explained in the  'CompositeViewTest' class
+    //the next 3 lines are used for testing as explained in the  'CompositeClientTest' class
     public static String getCashierView() {
          return CashierView.getCashierView();
     }

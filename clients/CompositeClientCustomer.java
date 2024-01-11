@@ -15,8 +15,8 @@ import middle.LocalMiddleFactory;
 
 import javax.swing.*;
 
-public class CompositeViewCustomer extends JFrame {
-    public CompositeViewCustomer() {
+public class CompositeClientCustomer extends JFrame {
+    public CompositeClientCustomer() {
         initComponents();
     }
 
@@ -50,6 +50,6 @@ public class CompositeViewCustomer extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new CompositeViewCustomer());
+        SwingUtilities.invokeLater(() -> new CompositeClientCustomer());
     }
 }

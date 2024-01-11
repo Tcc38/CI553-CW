@@ -34,7 +34,7 @@ public class CashierView implements Observer
   private final JButton     theBtBuy   = new JButton( BUY );
   private final JButton     theBtBought= new JButton( BOUGHT );
 
-  final JCheckBox   printReceipt = new JCheckBox("Would you like your receipt?", false);
+  final JCheckBox   printReceipt = new JCheckBox("",false);
 
   private StockReadWriter theStock     = null;
   private OrderProcessing theOrder     = null;

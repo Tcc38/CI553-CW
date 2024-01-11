@@ -18,9 +18,6 @@ class Setup
 
 //  " SQL code to set up database tables",
 
-  "drop table ProductList",
-  "drop table StockList",
-
 
   "drop table ProductTable",
   "create table ProductTable ("+

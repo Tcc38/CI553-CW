@@ -19,8 +19,8 @@ class Main {
    */
   public void begin() {
     //DEBUG.set(true); /* Lots of debug info */
-    new CompositeView();
-    new CompositeViewCustomer();
+    new CompositeClient();
+    new CompositeClientCustomer();
     //I overly-simplified the main class, removing a lot of "legacy" content
 
 

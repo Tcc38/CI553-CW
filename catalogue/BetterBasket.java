@@ -29,8 +29,8 @@ public class BetterBasket extends Basket
       for (Map.Entry<String, List<Product>> entry : groupedProducts.entrySet()) {
         int number = entry.getValue().stream().mapToInt(Product::getQuantity).sum();
         Product pr = entry.getValue().get(0);
-        sBuilder.append(pr.getProductNum()).append(" ");
-        sBuilder.append(pr.getDescription()).append(" ");
+        sBuilder.append(pr.getProductNum()).append("  ");
+        sBuilder.append(pr.getDescription()).append("  ");
         sBuilder.append("(").append(number).append(") ");
         sBuilder.append(gbp).append(pr.getPrice() * number).append("\n");
         total += pr.getPrice() * number;
