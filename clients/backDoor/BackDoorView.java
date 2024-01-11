@@ -96,7 +96,11 @@ public class BackDoorView implements Observer
     rootWindow.setVisible( true );                  // Make visible
     theInput.requestFocus();                        // Focus is here
   }
-  
+
+  public static String getBackDoorView() {
+    return "backDoorView";
+  } //Used for testing
+
   public void setController( BackDoorController c )
   {
     cont = c;

@@ -52,5 +52,4 @@ public class CashierController
     model.setPrintReceipt(printReceipt);
   }
 
-  public void doReceipt() { model.doReceipt();}
 }

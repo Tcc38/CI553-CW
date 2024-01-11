@@ -100,6 +100,7 @@ public class CashierView implements Observer
     theSP.getViewport().add( theOutput );           //  In TextArea
     rootWindow.setVisible( true );                  // Make visible
     theInput.requestFocus();                        // Focus is here
+
   }
 
 
@@ -112,6 +113,9 @@ public class CashierView implements Observer
   {
     cont = c;
   }
+  public static String getCashierView() {
+    return "cashierView";
+  } // used for testing
 
   /**
    * Update the view

@@ -13,6 +13,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Observable;
 
+import static javax.swing.UIManager.getInt;
+
 /**
  * Implements the Model of the cashier client
  * @author  Mike Smith University of Brighton
@@ -105,6 +107,7 @@ public class CashierModel extends Observable
    */
   public void doBuy()
   {
+    makeBasket();
     String theAction = "";
     int    amount  = 1;                         //  & quantity
     try
@@ -137,13 +140,13 @@ public class CashierModel extends Observable
     setChanged(); notifyObservers(theAction);
   }
   public void setPrintReceipt(boolean printReceipt){
-
   }
   public void doReceipt() {
-    Basket basket = getBasket();
+    Basket basket = getBasket();;
       if (basket != null) {
+        getInt(BetterBasket.theOrderNum++);
         LocalDateTime timeStamp = LocalDateTime.now();
-        DateTimeFormatter receiptFormat = DateTimeFormatter.ofPattern("dd_MM_yy--HH-mm");
+        DateTimeFormatter receiptFormat = DateTimeFormatter.ofPattern("dd_MM_yy--HH-mm-ss");// initially did not use the seconds in the format, but I now do since it will not work with multiple orders.
         String receiptTag = receiptFormat.format(timeStamp);
         try {
           File receiptDir = new File("savedReceipts");
@@ -157,30 +160,29 @@ public class CashierModel extends Observable
 
         } catch (IOException e) {
           System.out.println("Printing error");
-          e.printStackTrace();
         }
     }
+    theBasket = null ;
   }
   /**
    * Customer pays for the contents of the basket
    */
   public void doBought(boolean printReceipt) {
-    if (printReceipt) {
-      doReceipt();
-    }
+
 
       String theAction = "";
-      int amount = 1;                       //  & quantity
       try {
         if (theBasket != null &&
-                theBasket.size() >= 1)            // items > 1
+                !theBasket.isEmpty())            // items > 1
         {                                       // T
           theOrder.newOrder(theBasket);       //  Process order
-          theBasket = null;                     //  reset
+
         }                                       //
         theAction = "Next customer";            // New Customer
         theState = State.process;               // All Done
-        theBasket = null;
+        if (printReceipt && theBasket!=null) {
+          doReceipt();
+        }
       } catch (OrderException e) {
         DEBUG.error("%s\n%s",
                 "CashierModel.doCancel", e.getMessage());
@@ -226,7 +228,9 @@ public class CashierModel extends Observable
    */
   protected BetterBasket makeBasket()
   {
+
     return new BetterBasket();
+
   }
 }
   

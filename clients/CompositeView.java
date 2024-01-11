@@ -17,8 +17,8 @@ public class CompositeView extends JFrame  {
     public CompositeView() {
         initComponents();
     }
-LocalMiddleFactory cvmf = new LocalMiddleFactory();// i created a new instance of the LocalMiddleFactory, specifically for the new clients(not sure if it was needed yet it works)
-    private void initComponents() {
+LocalMiddleFactory cvmf = new LocalMiddleFactory();// I created a new instance of the LocalMiddleFactory, specifically for the new clients(not sure if it was needed yet it works)
+     void initComponents() {
 
 
         CashierView cashierView = new CashierView(this, cvmf, 0, 0);
@@ -43,7 +43,7 @@ LocalMiddleFactory cvmf = new LocalMiddleFactory();// i created a new instance o
 
 
         setTitle("Composite View");
-        setSize(1200, 300); // Adjust the size as needed
+        setSize(1200, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -52,5 +52,17 @@ LocalMiddleFactory cvmf = new LocalMiddleFactory();// i created a new instance o
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new CompositeView());
+    }
+    //the next 3 lines are used for testing as explained in the  'CompositeViewTest' class
+    public static String getCashierView() {
+         return CashierView.getCashierView();
+    }
+
+    public static String getBackDoorView() {
+         return BackDoorView.getBackDoorView();
+    }
+
+    public static String getPickView() {
+        return PickView.getPickView();
     }
 }

@@ -77,6 +77,10 @@ public class PickView implements Observer
     cont = c;
   }
 
+  public static String getPickView() {
+    return "pickView";
+  } //used for testing
+
   /**
    * Update the view
    * @param modelC   The observed model
